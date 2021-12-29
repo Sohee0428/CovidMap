@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CovidMap</string>
+    <string name="BASE_URL">https://api.odcloud.kr/</string>
+    <string name="SERVICE_KEY">bNmSjmL3NWL/mAmsQV0SyDT+8DCdZckhVg5/tSsmJHa47eBZBE+aFvCHYxeM1Dsz2FcgQ64elqYL3mr6GUyjOg==</string>
 </resources>
