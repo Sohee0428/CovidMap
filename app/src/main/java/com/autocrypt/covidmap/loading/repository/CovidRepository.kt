@@ -1,14 +1,14 @@
-package com.autocrypt.covidmap.splash.repository
+package com.autocrypt.covidmap.loading.repository
 
 import com.autocrypt.covidmap.data.entity.CovidEntity
-import com.autocrypt.covidmap.data.response.CovidVaccinationResponse
-import com.autocrypt.covidmap.data.response.RequestCovidInquiry
+import com.autocrypt.covidmap.data.response.ResponseCovidVaccination
+import com.autocrypt.covidmap.data.response.RequestCovidVaccination
 import retrofit2.Callback
 
 interface CovidRepository {
     fun getCovidVaccinationCenter(
-        request: RequestCovidInquiry,
-        callback: Callback<CovidVaccinationResponse>
+        request: RequestCovidVaccination,
+        callback: Callback<ResponseCovidVaccination>
     )
 
     suspend fun getCovidDataList(): List<CovidEntity>

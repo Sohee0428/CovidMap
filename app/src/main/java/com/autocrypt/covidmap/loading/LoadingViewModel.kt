@@ -1,13 +1,12 @@
-package com.autocrypt.covidmap.splash
+package com.autocrypt.covidmap.loading
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.autocrypt.covidmap.data.entity.CovidEntity
-import com.autocrypt.covidmap.data.response.CovidVaccinationResponse
-import com.autocrypt.covidmap.data.response.RequestCovidInquiry
-import com.autocrypt.covidmap.splash.repository.CovidRepository
-import com.autocrypt.covidmap.splash.repository.CovidRepositoryImpl
+import com.autocrypt.covidmap.data.response.RequestCovidVaccination
+import com.autocrypt.covidmap.data.response.ResponseCovidVaccination
+import com.autocrypt.covidmap.loading.repository.CovidRepository
+import com.autocrypt.covidmap.loading.repository.CovidRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Main

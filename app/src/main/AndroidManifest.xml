@@ -16,7 +16,7 @@
         tools:targetApi="m">
 
         <activity
-            android:name=".splash.LoadingActivity"
+            android:name=".loading.LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

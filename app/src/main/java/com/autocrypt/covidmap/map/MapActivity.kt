@@ -17,7 +17,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
-
     private lateinit var binding: ActivityMapBinding
     private lateinit var naverMap: NaverMap
     private val mapViewModel: MapViewModel by viewModels()
@@ -27,7 +26,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_map)
 
         makeMap(savedInstanceState)
-        makeMarker()
+        initObserve()
     }
 
     override fun onMapReady(map: NaverMap) {

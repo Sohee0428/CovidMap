@@ -1,4 +1,4 @@
-package com.autocrypt.covidmap.splash
+package com.autocrypt.covidmap.loading
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LoadingActivity : AppCompatActivity() {
-
     private val loadingViewModel: LoadingViewModel by viewModels()
     private lateinit var binding: ActivityLoadingBinding
 
@@ -27,8 +26,7 @@ class LoadingActivity : AppCompatActivity() {
         }
         CoroutineScope(Dispatchers.IO).launch {
             loadingViewModel.deleteAll()
-            loadingViewModel.getCovidInquiryCenter()
+            loadingViewModel.getCovidVaccinationCenter()
         }
-
     }
 }

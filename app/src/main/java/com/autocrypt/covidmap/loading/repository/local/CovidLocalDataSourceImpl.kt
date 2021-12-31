@@ -1,4 +1,4 @@
-package com.autocrypt.covidmap.splash.repository.local
+package com.autocrypt.covidmap.loading.repository.local
 
 import com.autocrypt.covidmap.App
 import com.autocrypt.covidmap.data.CovidDatabase

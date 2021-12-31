@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.autocrypt.covidmap.data.entity.CovidEntity
-import com.autocrypt.covidmap.splash.repository.CovidRepository
-import com.autocrypt.covidmap.splash.repository.CovidRepositoryImpl
+import com.autocrypt.covidmap.loading.repository.CovidRepository
+import com.autocrypt.covidmap.loading.repository.CovidRepositoryImpl
 
 class MapViewModel : ViewModel() {
     private val repository: CovidRepository = CovidRepositoryImpl()

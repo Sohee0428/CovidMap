@@ -1,18 +1,18 @@
-package com.autocrypt.covidmap.splash.repository.remote
+package com.autocrypt.covidmap.loading.repository.remote
 
 import com.autocrypt.covidmap.App
 import com.autocrypt.covidmap.R
 import com.autocrypt.covidmap.data.network.RetrofitCreator
-import com.autocrypt.covidmap.data.response.CovidVaccinationResponse
-import com.autocrypt.covidmap.data.response.RequestCovidInquiry
+import com.autocrypt.covidmap.data.response.ResponseCovidVaccination
+import com.autocrypt.covidmap.data.response.RequestCovidVaccination
 import retrofit2.Callback
 
 class CovidRemoteDataSourceImpl : CovidRemoteDataSource {
     private val covidInquiryService = RetrofitCreator.create()
 
     override fun getCovidVaccinationCenter(
-        request: RequestCovidInquiry,
-        callback: Callback<CovidVaccinationResponse>
+        request: RequestCovidVaccination,
+        callback: Callback<ResponseCovidVaccination>
     ) {
         covidInquiryService.getCovidVaccinationCenter(
             request.perPage,

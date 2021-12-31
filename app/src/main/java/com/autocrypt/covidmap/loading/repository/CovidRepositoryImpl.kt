@@ -1,12 +1,12 @@
-package com.autocrypt.covidmap.splash.repository
+package com.autocrypt.covidmap.loading.repository
 
 import com.autocrypt.covidmap.data.entity.CovidEntity
-import com.autocrypt.covidmap.data.response.CovidVaccinationResponse
-import com.autocrypt.covidmap.data.response.RequestCovidInquiry
-import com.autocrypt.covidmap.splash.repository.local.CovidLocalDataSource
-import com.autocrypt.covidmap.splash.repository.local.CovidLocalDataSourceImpl
-import com.autocrypt.covidmap.splash.repository.remote.CovidRemoteDataSource
-import com.autocrypt.covidmap.splash.repository.remote.CovidRemoteDataSourceImpl
+import com.autocrypt.covidmap.data.response.ResponseCovidVaccination
+import com.autocrypt.covidmap.data.response.RequestCovidVaccination
+import com.autocrypt.covidmap.loading.repository.local.CovidLocalDataSource
+import com.autocrypt.covidmap.loading.repository.local.CovidLocalDataSourceImpl
+import com.autocrypt.covidmap.loading.repository.remote.CovidRemoteDataSource
+import com.autocrypt.covidmap.loading.repository.remote.CovidRemoteDataSourceImpl
 import retrofit2.Callback
 
 class CovidRepositoryImpl : CovidRepository {
@@ -14,8 +14,8 @@ class CovidRepositoryImpl : CovidRepository {
     private val covidRemoteDataSource: CovidRemoteDataSource = CovidRemoteDataSourceImpl()
 
     override fun getCovidVaccinationCenter(
-        request: RequestCovidInquiry,
-        callback: Callback<CovidVaccinationResponse>
+        request: RequestCovidVaccination,
+        callback: Callback<ResponseCovidVaccination>
     ) {
         covidRemoteDataSource.getCovidVaccinationCenter(request, callback)
     }
