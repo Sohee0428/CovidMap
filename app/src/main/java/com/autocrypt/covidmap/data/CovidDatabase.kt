@@ -15,7 +15,7 @@ abstract class CovidDatabase : RoomDatabase() {
     companion object {
         private var INSTANCE: CovidDatabase? = null
 
-//        재사용을 하기 위해 싱글톤으로 구현했습니다.
+//        재사용을 하기 위해 싱글톤으로 구현
         @Synchronized
         fun getInstance(context: Context): CovidDatabase? {
             if (INSTANCE == null) {
