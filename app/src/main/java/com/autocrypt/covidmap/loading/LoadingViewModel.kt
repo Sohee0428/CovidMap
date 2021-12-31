@@ -23,25 +23,32 @@ class LoadingViewModel : ViewModel() {
     val startMapActivityEvent: LiveData<Unit>
         get() = _startMapActivityEvent
 
-    suspend fun getCovidInquiryCenter() {
-        val request = RequestCovidInquiry(page, defaultPerPage)
-        val callback = object : Callback<CovidVaccinationResponse> {
-            override fun onResponse(
-                call: Call<CovidVaccinationResponse>,
-                response: Response<CovidVaccinationResponse>
-            ) {
-                val entityList = CovidVaccinationResponse.toEntityList(response.body()!!)
+    private val _showFailMessage = MutableLiveData<Unit>()
+    val showFailMessage: LiveData<Unit>
+        get() = _showFailMessage
 
+    suspend fun getCovidVaccinationCenter() {
+        val request = RequestCovidVaccination(page, DEFAULT_PER_PAGE)
+        val callback = object : Callback<ResponseCovidVaccination> {
+            override fun onResponse(
+                call: Call<ResponseCovidVaccination>,
+                responseCovidVaccination: Response<ResponseCovidVaccination>
+            ) {
                 CoroutineScope(Dispatchers.IO).launch {
-                    insertDB(entityList)
-                }
-                if (page == 10) {
-                    _startMapActivityEvent.value = Unit
-                    CoroutineScope(Main).launch {
+                    if (responseCovidVaccination.isSuccessful.not()) {
+                        _showFailMessage.postValue(Unit)
+                        return@launch
                     }
-                } else {
-                    page++
-                    CoroutineScope(Dispatchers.IO).launch { getCovidInquiryCenter() }
+                    insertDB(responseCovidVaccination.body())
+
+                    if (page == 10) {
+                        CoroutineScope(Main).launch {
+                            _startMapActivityEvent.value = Unit
+                        }
+                    } else {
+                        page++
+                        getCovidVaccinationCenter()
+                    }
                 }
             }
 
@@ -52,8 +59,14 @@ class LoadingViewModel : ViewModel() {
         repository.getCovidVaccinationCenter(request, callback)
     }
 
-    suspend fun insertDB(entityList: List<CovidEntity>) {
-        repository.insertAll(entityList)
+    private suspend fun insertDB(response: ResponseCovidVaccination?) {
+        if (response == null) {
+            _showFailMessage.postValue(Unit)
+        } else {
+            val entityList =
+                ResponseCovidVaccination.toEntityList(response)
+            repository.insertAll(entityList)
+        }
     }
 
     suspend fun deleteAll() {
@@ -61,6 +74,6 @@ class LoadingViewModel : ViewModel() {
     }
 
     companion object {
-        const val defaultPerPage = 10
+        const val DEFAULT_PER_PAGE = 10
     }
 }
