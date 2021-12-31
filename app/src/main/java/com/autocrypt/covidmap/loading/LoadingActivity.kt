@@ -2,6 +2,8 @@ package com.autocrypt.covidmap.loading
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -20,10 +22,22 @@ class LoadingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_loading)
 
+        initObserve()
+        initLocalData()
+    }
+
+    private fun initObserve() {
         loadingViewModel.startMapActivityEvent.observe(this) {
             startActivity(Intent(this, MapActivity::class.java))
             finish()
         }
+        loadingViewModel.showFailMessage.observe(this) {
+            binding.progressBar.visibility = View.GONE
+            Toast.makeText(this, getString(R.string.failMessage), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun initLocalData() {
         CoroutineScope(Dispatchers.IO).launch {
             loadingViewModel.deleteAll()
             loadingViewModel.getCovidVaccinationCenter()

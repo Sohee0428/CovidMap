@@ -2,10 +2,12 @@
     <string name="app_name">예방접종센터 지도 서비스</string>
     <string name="BASE_URL">https://api.odcloud.kr/</string>
     <string name="SERVICE_KEY">bNmSjmL3NWL/mAmsQV0SyDT+8DCdZckhVg5/tSsmJHa47eBZBE+aFvCHYxeM1Dsz2FcgQ64elqYL3mr6GUyjOg==</string>
+    <string name="NAVER_MAP_KEY">2q5r0wb55f</string>
     <string name="loading">로딩중</string>
     <string name="vaccinationCenterName">센터 명</string>
     <string name="address">주소</string>
     <string name="phoneNumber">전화번호</string>
     <string name="vaccinationCenterInformation">예방접종센터 정보</string>
     <string name="close">닫기</string>
+    <string name="failMessage">데이터를 불러오지 못했습니다.\n잠시후 다시 시도해주시기 바랍니다.</string>
 </resources>

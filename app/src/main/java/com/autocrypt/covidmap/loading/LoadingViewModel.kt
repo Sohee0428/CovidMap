@@ -45,7 +45,8 @@ class LoadingViewModel : ViewModel() {
                 }
             }
 
-            override fun onFailure(call: Call<CovidVaccinationResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseCovidVaccination>, t: Throwable) {
+                _showFailMessage.postValue(Unit)
             }
         }
         repository.getCovidVaccinationCenter(request, callback)
