@@ -8,15 +8,15 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_baseline_health_and_safety_24"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_baseline_health_and_safety_24"
         android:supportsRtl="true"
         android:theme="@style/Theme.CovidMap"
         tools:targetApi="m">
 
         <activity
-            android:name=".splash.SplashActivity"
+            android:name=".splash.LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
