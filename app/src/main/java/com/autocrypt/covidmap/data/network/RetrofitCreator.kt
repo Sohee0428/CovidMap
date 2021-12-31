@@ -9,13 +9,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitCreator {
 
-    fun create(): CovidInquiryService {
+    fun create(): CovidVaccinationService {
         return Retrofit.Builder()
             .baseUrl(App.instance.getString(R.string.BASE_URL))
             .client(getClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(CovidInquiryService::class.java)
+            .create(CovidVaccinationService::class.java)
     }
 
     private fun getClient(): OkHttpClient {

@@ -1,4 +1,4 @@
-package com.autocrypt.covidmap.splash
+package com.autocrypt.covidmap.map
 
 import android.util.Log
 import androidx.lifecycle.LiveData

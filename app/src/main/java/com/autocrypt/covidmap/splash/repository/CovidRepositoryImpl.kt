@@ -1,7 +1,7 @@
 package com.autocrypt.covidmap.splash.repository
 
 import com.autocrypt.covidmap.data.entity.CovidEntity
-import com.autocrypt.covidmap.data.response.CovidInquiryResponse
+import com.autocrypt.covidmap.data.response.CovidVaccinationResponse
 import com.autocrypt.covidmap.data.response.RequestCovidInquiry
 import com.autocrypt.covidmap.splash.repository.local.CovidLocalDataSource
 import com.autocrypt.covidmap.splash.repository.local.CovidLocalDataSourceImpl
@@ -13,11 +13,11 @@ class CovidRepositoryImpl : CovidRepository {
     private val covidLocalDataSource: CovidLocalDataSource = CovidLocalDataSourceImpl()
     private val covidRemoteDataSource: CovidRemoteDataSource = CovidRemoteDataSourceImpl()
 
-    override fun getCovidInquiryCenter(
+    override fun getCovidVaccinationCenter(
         request: RequestCovidInquiry,
-        callback: Callback<CovidInquiryResponse>
+        callback: Callback<CovidVaccinationResponse>
     ) {
-        covidRemoteDataSource.getCovidInquiryCenter(request, callback)
+        covidRemoteDataSource.getCovidVaccinationCenter(request, callback)
     }
 
     override suspend fun getCovidDataList(): List<CovidEntity> {

@@ -1,28 +1,26 @@
 package com.autocrypt.covidmap.map
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModel
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.autocrypt.covidmap.R
-import com.autocrypt.covidmap.splash.SplashViewModel
+import com.autocrypt.covidmap.data.entity.CovidEntity
+import com.autocrypt.covidmap.databinding.ActivityMapBinding
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
-import com.naver.maps.map.util.MarkerIcons
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 
 class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mapView: MapView
     private lateinit var naverMap: NaverMap
-    private val marker = Marker()
-    private val mapViewModel: SplashViewModel by viewModels()
+    private val mapViewModel: MapViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
